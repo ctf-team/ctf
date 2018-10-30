@@ -10,13 +10,13 @@ WORKDIR $GOPATH/src/ctf
 COPY ./Gopkg.toml ./Gopkg.lock ./
 RUN dep ensure --vendor-only
 COPY . ./
-RUN CC=gcc CGO_ENABLED=1 GOARCH=arm GOARM=7 GOOS=linux go build -a -o /app ctf/cmd/serverless-ctf
+RUN GOARCH=arm GOARM=7 GOOS=linux go build -a -o /app ctf/cmd/serverless-ctf
 
 FROM scratch
 FROM resin/raspberrypi3-alpine:latest
 RUN apk --no-cache add ca-certificates && update-ca-certificates
 RUN apk --no-cache add tzdata
 COPY --from=builder /app ./
-COPY --from=builder $GOPATH/src/ctf/cmd/serverless-ctf/assets ./assets
+COPY --from=builder /go/src/ctf/cmd/serverless-ctf/assets ./assets
 RUN chmod +x ./app
 ENTRYPOINT ["./app"]
