@@ -18,4 +18,4 @@ RUN apk --no-cache add ca-certificates && update-ca-certificates
 RUN apk --no-cache add tzdata
 COPY --from=builder /app ./
 RUN chmod +x ./app
-ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["./app"]

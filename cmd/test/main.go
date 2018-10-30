@@ -1,8 +1,8 @@
 package main
 
 /*
-	#import <stdio.h>
-	#import <stdlib.h>
+	#include <stdio.h>
+	#include <stdlib.h>
 
 	static void printme(char *test) {
 		printf("%s", test);
