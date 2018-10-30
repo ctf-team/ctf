@@ -10,7 +10,7 @@ WORKDIR $GOPATH/src/ctf
 COPY ./Gopkg.toml ./Gopkg.lock ./
 RUN dep ensure --vendor-only
 COPY . ./
-RUN CGO_ENABLED=1 GOARCH=arm GOARM=7 GOOS=linux go build -a -o /app ctf/cmd/test
+RUN CC=gcc CGO_ENABLED=1 GOARCH=arm GOARM=7 GOOS=linux go build -a -o /app ctf/cmd/test
 
 FROM scratch
 FROM resin/raspberrypi3-alpine:latest
