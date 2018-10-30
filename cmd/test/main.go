@@ -1,7 +1,18 @@
-package test
+package main
 
-import "fmt"
+/*
+	#import <stdio.h>
+	#import <stdlib.h>
+
+	static void printme(char *test) {
+		printf("%s", test);
+	}
+*/
+import "C"
+import "unsafe"
 
 func main() {
-	fmt.Println("Test output!")
+	cs := C.CString("hey from C!")
+	C.printme(cs)
+	C.free(unsafe.Pointer(cs))
 }
