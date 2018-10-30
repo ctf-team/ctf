@@ -1,18 +1,18 @@
 package main
 
 /*
-	#include <stdio.h>
 	#include <stdlib.h>
-
-	static void printme(char *test) {
-		printf("%s", test);
-	}
+	#include "test.h"
 */
 import "C"
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 func main() {
 	cs := C.CString("hey from C!")
 	C.printme(cs)
 	C.free(unsafe.Pointer(cs))
+	fmt.Println("Hey from Golang!")
 }
