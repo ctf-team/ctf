@@ -1,0 +1,7 @@
+version: "2"
+services:
+  challenge-validator:
+    image: challenge-validator:latest
+    restart: always
+    ports:
+    - "3333:3333"
