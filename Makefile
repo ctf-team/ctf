@@ -1,4 +1,7 @@
-build: clear restart-docker-compose
+build:
+		@echo "Nothing to build."
+
+rebuild: clear restart-docker-compose
 
 build-all: clear challenge-validator serverless-ctf attack-rtlo restart-docker-compose
 
