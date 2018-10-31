@@ -1,0 +1,1 @@
+char *getflag(char *yourName);

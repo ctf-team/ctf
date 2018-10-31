@@ -21,6 +21,12 @@ attack-rtlo:
 		@docker build -t attack-rtlo -f docker/attack/rtlo/Dockerfile .
 		@docker-compose up --no-deps -d attack-rtlo
 
+# Reverse
+reverse-reverse1:
+		@echo "Building reverse-reverse1..."
+		@docker build -t reverse-reverse1 -f docker/reverse/reverse-1/Dockerfile .
+		@docker-compose up --no-deps -d reverse-reverse1
+
 # Compose
 restart-docker-compose:
 		@echo "Pulling down docker-compose..."
