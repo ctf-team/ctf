@@ -2,9 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CTF Main Page</title>
+    <title>Challenge List</title>
+    <style>
+        table {
+            border-spacing: 0;
+            padding: 0;
+        }
+
+        td {
+            border-right: 1px solid black;
+            padding: 5px;
+            margin: 0;
+            border-bottom: 1px solid black;
+        }
+
+        tr > td:first-child {
+            border-left: 1px solid black;
+        }
+
+        table > tr:first-child > td {
+            border-top: 1px solid black;
+        }
+        table > tbody > tr:first-child > td {
+            border-top: 1px solid black;
+        }
+    </style>
 </head>
 <body>
-    <h1>Placeholder text.</h1>
+    <h1>Welcome!</h1>
+    <h3>Here's a list of our current CTF challenges by category:</h3>
+    <h4>Attacks:</h4>
+    <table>
+        <tr>
+            <td><b>Name</b></td>
+            <td><b>Validator Name</b></td>
+            <td><b>Description</b></td>
+            <td><b>Address</b></td>
+        </tr>
+        <tr>
+            <td>RTLO</td>
+            <td>rtlo</td>
+            <td>Can you read the file?</td>
+            <td>ctf.local:3334</td>
+        </tr>
+    </table>
+    <h4>Reverse Engineering:</h4>
+    <table>
+        <tr>
+            <td><b>Name</b></td>
+            <td><b>Validator Name</b></td>
+            <td><b>Description</b></td>
+            <td><b>Address</b></td>
+            <td><b>File</b></td>
+        </tr>
+        <tr>
+            <td>RTLO</td>
+            <td>rtlo</td>
+            <td>Can you read the file?</td>
+            <td>ctf.local:3334</td>
+            <td><a href="http://ctf.local/file">Download</a></td>
+        </tr>
+    </table>
+    <p>To validate the challenges, please use ctf.local:3333</p>
 </body>
 </html>

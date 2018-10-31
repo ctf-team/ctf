@@ -10,3 +10,9 @@ services:
     restart: always
     ports:
     - "80:3334"
+# Attacks
+  rtlo:
+    image: attacks-rtlo:latest
+    restart: always
+    ports:
+    - "3334:3333"

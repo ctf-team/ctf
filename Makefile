@@ -7,6 +7,12 @@ build-challenge-validator:
 build-serverless-ctf:
 		@echo "Building serverless-ctf..."
 		docker build -t serverless-ctf -f docker/serverless-ctf/Dockerfile .
+# Attacks
+build-rtlo:
+		@echo "Building attacks-rtlo..."
+		docker build -t attacks-rtlo -f docker/attacks/rtlo/Dockerfile .
+
+# Compose
 
 restart-docker-compose:
 		@echo "Pulling down docker-compose..."
