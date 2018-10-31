@@ -1,14 +1,14 @@
 build:
 		@echo "Nothing to build."
 
-rebuild: clear restart-docker-compose
+rebuild: clear restart
 
-build-all: clear challenge-validator serverless-ctf attack-rtlo reverse-reverse1 restart-docker-compose
+build-all: clear verify serverless-ctf attack-rtlo reverse-reverse1 restart
 
-challenge-validator:
-		@echo "Building challenge validator..."
-		@docker build -t challenge-validator -f docker/challenge-validator/Dockerfile .
-		@docker-compose up --no-deps -d challenge-validator
+verify:
+		@echo "Building challenge verify..."
+		@docker build -t verify -f docker/verify/Dockerfile .
+		@docker-compose up --no-deps -d verify
 
 serverless-ctf:
 		@echo "Building serverless-ctf..."
@@ -28,7 +28,7 @@ reverse-reverse1:
 		@docker-compose up --no-deps -d reverse-reverse1
 
 # Compose
-restart-docker-compose:
+restart:
 		@echo "Pulling down docker-compose..."
 		@docker-compose down
 		@echo "Pulling up docker-compose..."
