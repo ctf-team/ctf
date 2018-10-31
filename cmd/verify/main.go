@@ -16,6 +16,7 @@ func main() {
 	challengeList = make(map[string]string)
 	// challenge list here.
 	challengeList["rtlo"] = "FLAG-G3hTUoGN9OG1edz53nKi"
+	challengeList["reverse-1"] = "FLAG-gTwJDjCGPFfEruCQFs8z"
 
 	tcpserver.ListenPort(CONN_HOST+":"+CONN_PORT, handleRequest)
 }
