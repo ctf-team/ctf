@@ -25,7 +25,7 @@ func main() {
 func handleRequest(t *tcpserver.TcpClient) {
 	defer t.Close()
 
-	t.Write("To see the list of available commands, please type \"help\".\n")
+	t.Write("To see the list of available commands, please type \"help\".\n> ")
 	// Close the connection when you're done with it.
 	for {
 		if command, err := t.Read(); err != nil {
@@ -38,9 +38,9 @@ func handleRequest(t *tcpserver.TcpClient) {
 			case "list":
 				var challenges string
 				for key, _ := range challengeList {
-					challenges += key + "\n"
+					challenges += "- " + key + "\n"
 				}
-				t.Write("Loaded challenges:\n\n> " + challenges)
+				t.Write("Loaded challenges:\n" + challenges + "\n> ")
 				break
 			case "solve":
 				if len(possibleStrings) < 3 {
@@ -48,17 +48,14 @@ func handleRequest(t *tcpserver.TcpClient) {
 					break
 				}
 				// Check if param 2 is in our list of possible challenges.
-				for key, val := range challengeList {
-					if key == possibleStrings[1] {
-						// check val
-						if val == possibleStrings[2] {
-							t.Write("Congratulations! That's the correct flag for '" + key + "'.\n\n> ")
-						} else {
-							t.Write("Sorry, that flag is not correct. Try harder!\n\n> ")
-						}
+				if val, ok := challengeList[possibleStrings[1]]; ok {
+					if val == possibleStrings[2] {
+						t.Write("Congratulations! That's the correct flag for '" + possibleStrings[1] + "'.\n\n> ")
 					} else {
-						t.Write("Sorry, that challenge does not exist.\n\n> ")
+						t.Write("Sorry, that flag is not correct. Try harder!\n\n> ")
 					}
+				} else {
+					t.Write("Sorry, that challenge does not exist.\n\n> ")
 				}
 				break
 			case "help":
