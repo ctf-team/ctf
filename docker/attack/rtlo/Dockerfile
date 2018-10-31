@@ -17,6 +17,6 @@ FROM resin/raspberrypi3-alpine:latest
 RUN apk --no-cache add ca-certificates && update-ca-certificates
 RUN apk --no-cache add tzdata
 COPY --from=builder /app ./
-COPY --from=builder /go/src/ctf/cmd/attacks/rtlo/assets ./assets
+COPY --from=builder /go/src/ctf/cmd/attack/rtlo/assets ./assets
 RUN chmod +x ./app
 ENTRYPOINT ["./app"]

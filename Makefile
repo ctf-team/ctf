@@ -5,17 +5,20 @@ build-all: clear build-challenge-validator build-serverless-ctf build-rtlo resta
 build-challenge-validator:
 		@echo "Building challenge validator..."
 		docker build -t challenge-validator -f docker/challenge-validator/Dockerfile .
+		docker-compose up --no-deps -d challenge-validator
 
 build-serverless-ctf:
 		@echo "Building serverless-ctf..."
 		docker build -t serverless-ctf -f docker/serverless-ctf/Dockerfile .
+		docker-compose up --no-deps -d serverless-ctf
+
 # Attacks
-build-rtlo:
-		@echo "Building attacks-rtlo..."
-		docker build -t attacks-rtlo -f docker/attacks/rtlo/Dockerfile .
+attack-rtlo:
+		@echo "Building attack-rtlo..."
+		docker build -t attack-rtlo -f docker/attack/rtlo/Dockerfile .
+		docker-compose up --no-deps -d attack-rtlo
 
 # Compose
-
 restart-docker-compose:
 		@echo "Pulling down docker-compose..."
 		docker-compose down

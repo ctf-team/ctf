@@ -12,7 +12,7 @@ services:
     - "80:3334"
 # Attacks
   rtlo:
-    image: attacks-rtlo:latest
+    image: attack-rtlo:latest
     restart: always
     ports:
     - "3334:3333"
