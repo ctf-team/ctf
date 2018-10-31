@@ -3,7 +3,7 @@ build:
 
 rebuild: clear restart-docker-compose
 
-build-all: clear challenge-validator serverless-ctf attack-rtlo restart-docker-compose
+build-all: clear challenge-validator serverless-ctf attack-rtlo reverse-reverse1 restart-docker-compose
 
 challenge-validator:
 		@echo "Building challenge validator..."
