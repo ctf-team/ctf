@@ -1,4 +1,6 @@
-build: clear build-challenge-validator build-serverless-ctf restart-docker-compose
+build: clear restart-docker-compose
+
+build-all: clear build-challenge-validator build-serverless-ctf build-rtlo restart-docker-compose
 
 build-challenge-validator:
 		@echo "Building challenge validator..."
