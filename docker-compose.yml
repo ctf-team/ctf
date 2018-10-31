@@ -11,13 +11,13 @@ services:
     ports:
     - "80:3334"
 # Attacks
-  rtlo:
+  attack-rtlo:
     image: attack-rtlo:latest
     restart: always
     ports:
     - "3334:3333"
 # Reverse
-  reverse1:
+  reverse-reverse1:
     image: reverse-reverse1:latest
     restart: always
     ports:
