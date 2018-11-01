@@ -27,7 +27,7 @@ services:
     - hackme-php
     volumes:
     - ./cmd/web/hackme/www:/www
-    - ./cmd/web/hackme/nginx/default:/etc/nginx/sites-enabled/dwfault
+    - ./cmd/web/hackme/nginx/default:/etc/nginx/sites-enabled/default
     links:
     - hackme-php
     ports:
