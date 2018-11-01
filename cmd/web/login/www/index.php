@@ -3,6 +3,8 @@ define ("FLAG_1", getenv("login_flag"));
 if (isset($_GET['user'], $_GET['password'])) {
     if ($_GET['user'] == "admin" && $_GET['password'] == "jKalsFwq") {
         exit(FLAG_1);
+    } else {
+        exit("Incorrect username or password!");
     }
 }
 ?>

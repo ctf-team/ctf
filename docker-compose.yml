@@ -32,6 +32,9 @@ services:
     #login
     - ./cmd/web/login/www:/sites/login
     - ./cmd/web/login/nginx/default:/etc/nginx/sites-enabled/login
+    #md5-1
+    - ./cmd/web/md51/www:/sites/md51
+    - ./cmd/web/md51/nginx/default:/etc/nginx/sites-enabled/md51
     #hackme
     - ./cmd/web/hackme/www:/sites/hackme
     - ./cmd/web/hackme/nginx/default:/etc/nginx/sites-enabled/default
@@ -54,6 +57,8 @@ services:
     - "getme_flag=FLAG-VKqyzggSJJeDmcpUAgbR"
     #login
     - "login_flag=FLAG-cgr2dxABLEGnoEq1nzbE"
+    #md51
+    - "md51_flag=FLAG-D2SxIOT1L6msTdU1BIoT"
     #hackme
     - "FLAG_1=FLAG-9n2q2cXeWuWgob0TZAFs"
     - "FLAG_2=FLAG-kc4melGy9UEBNImkj75b"
@@ -66,13 +71,12 @@ services:
     volumes:
     #getme
     - ./cmd/web/getme/www:/sites/getme
-    - ./cmd/web/getme/nginx/default:/etc/nginx/sites-enabled/getme
     #login
     - ./cmd/web/login/www:/sites/login
-    - ./cmd/web/login/nginx/default:/etc/nginx/sites-enabled/login
+    #md51
+    - ./cmd/web/md51/www:/sites/md51
     #hackme
     - ./cmd/web/hackme/www:/sites/hackme
-    - ./cmd/web/hackme/nginx/default:/etc/nginx/sites-enabled/default
     links:
     - hackme-mysql
   hackme-mysql:
