@@ -26,6 +26,9 @@ services:
     depends_on:
     - hackme-php
     volumes:
+    #hackme
+    - ./cmd/web/hackme/www:/sites/hackme
+    - ./cmd/web/hackme/nginx/default:/etc/nginx/sites-enabled/default
     #getme
     - ./cmd/web/getme/www:/sites/getme
     - ./cmd/web/getme/nginx/default:/etc/nginx/sites-enabled/getme
@@ -35,30 +38,23 @@ services:
     #md5-1
     - ./cmd/web/md51/www:/sites/md51
     - ./cmd/web/md51/nginx/default:/etc/nginx/sites-enabled/md51
-    #hackme
-    - ./cmd/web/hackme/www:/sites/hackme
-    - ./cmd/web/hackme/nginx/default:/etc/nginx/sites-enabled/default
     links:
     - hackme-php
     ports:
+    #hackme
+    - "3400:80"
     #getme
     - "3401:81"
     #login
     - "3402:82"
-    #hackme
-    - "3400:80"
+    #md5-1
+    - "3403:83"
   hackme-php:
     image: tobi312/rpi-php:7.0-fpm
     restart: always
     depends_on:
     - hackme-mysql
     environment:
-    #getme
-    - "getme_flag=FLAG-VKqyzggSJJeDmcpUAgbR"
-    #login
-    - "login_flag=FLAG-cgr2dxABLEGnoEq1nzbE"
-    #md51
-    - "md51_flag=FLAG-D2SxIOT1L6msTdU1BIoT"
     #hackme
     - "FLAG_1=FLAG-9n2q2cXeWuWgob0TZAFs"
     - "FLAG_2=FLAG-kc4melGy9UEBNImkj75b"
@@ -68,15 +64,21 @@ services:
     - "MYSQL_PASSWORD=GV0uwG5xBJSpX354cwGc"
     - "MYSQL_HOST=hackme-mysql"
     - "MYSQL_DB_NAME=hackme"
+    #getme
+    - "getme_flag=FLAG-VKqyzggSJJeDmcpUAgbR"
+    #login
+    - "login_flag=FLAG-cgr2dxABLEGnoEq1nzbE"
+    #md51
+    - "md51_flag=FLAG-D2SxIOT1L6msTdU1BIoT"
     volumes:
+    #hackme
+    - ./cmd/web/hackme/www:/sites/hackme
     #getme
     - ./cmd/web/getme/www:/sites/getme
     #login
     - ./cmd/web/login/www:/sites/login
     #md51
     - ./cmd/web/md51/www:/sites/md51
-    #hackme
-    - ./cmd/web/hackme/www:/sites/hackme
     links:
     - hackme-mysql
   hackme-mysql:
