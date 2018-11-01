@@ -5,7 +5,7 @@ define ("FLAG_1", getenv("getme_flag"));
 <body>
 <?php if(!isset($_GET['auth'])) { ?>
     <h2>Get me! (if you're authorized)</h2>
-    <button href="?auth=false">Submit</button>
+    <a href="index.php?auth=false"><button>Submit</button></a>
 <?php } else {
     if ($_GET['auth'] == "false") { ?>
         <h2>Hey, you're not authorized!</h2>
