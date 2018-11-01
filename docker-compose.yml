@@ -49,7 +49,6 @@ services:
     volumes:
     - ./cmd/web/hackme/www:/www
     - ./cmd/web/hackme/php/php.ini:/etc/php/7.0/fpm/php.ini
-    - ./cmd/web/hackme/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf
     links:
     - hackme-mysql
   hackme-mysql:
