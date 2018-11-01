@@ -1,6 +1,6 @@
 server {
         listen 81;
-        root /www/getme;
+        root /sites/getme;
         index index.html index.htm index.php;
         server_name _;
 
