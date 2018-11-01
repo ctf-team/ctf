@@ -29,7 +29,7 @@ services:
     - ./cmd/web/hackme/www:/www
     - ./cmd/web/hackme/nginx/default:/etc/nginx/sites-enabled/dwfault
     links:
-    - php
+    - hackme-php
     ports:
     - "3400:80"
   hackme-php:
@@ -43,7 +43,7 @@ services:
     - "FLAG_3=FLAG-3OrIsMRduP6lSdWPbvVL"
     - "FLAG_4=FLAG-S7Uu3j1tdex0VlZSc98C"
     - "MYSQL_USERNAME=hackme"
-    - "MYSQL_PASSWORD=password"
+    - "MYSQL_PASSWORD=GV0uwG5xBJSpX354cwGc"
     - "MYSQL_HOST=hackme-mysql"
     - "MYSQL_DB_NAME=hackme"
     volumes:
@@ -51,7 +51,7 @@ services:
     - ./cmd/web/hackme/php/php.ini:/etc/php/7.0/fpm/php.ini
     - ./cmd/web/hackme/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf
     links:
-    - hackme-mysql:mysql-host
+    - hackme-mysql
   hackme-mysql:
     image: jsurf/rpi-mariadb:latest
     restart: always
