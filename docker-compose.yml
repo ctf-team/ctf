@@ -1,24 +1,68 @@
 version: "2"
 services:
-  verify:
-    image: verify:latest
+  ctfd:
+    image: ctfd
     restart: always
     ports:
-    - "3333:3333"
-  serverless-ctf:
-    image: serverless-ctf:latest
-    restart: always
-    ports:
-    - "80:3334"
-# Attacks
+    - "80:8000"
+    volumes:
+    - ./ctfd/ctfd.db:/opt/CTFd/CTFd/ctfd.db
+  # Attacks
   attack-rtlo:
     image: attack-rtlo:latest
     restart: always
     ports:
     - "3334:3333"
-# Reverse
+  # Reverse
   reverse-reverse1:
     image: reverse-reverse1:latest
     restart: always
     ports:
     - "3335:3333"
+  # Web
+  hackme:
+    image: tobi312/rpi-nginx:latest
+    restart: always
+    depends_on:
+    - hackme-php
+    volumes:
+    - ./cmd/web/hackme/www:/www
+    - ./cmd/web/hackme/nginx/default:/etc/nginx/sites-enabled/dwfault
+    links:
+    - php
+    ports:
+    - "3400:80"
+  hackme-php:
+    image: tobi312/rpi-php:7.0-fpm
+    restart: always
+    depends_on:
+    - hackme-mysql
+    environment:
+    - "FLAG_1=FLAG-9n2q2cXeWuWgob0TZAFs"
+    - "FLAG_2=FLAG-kc4melGy9UEBNImkj75b"
+    - "FLAG_3=FLAG-3OrIsMRduP6lSdWPbvVL"
+    - "FLAG_4=FLAG-S7Uu3j1tdex0VlZSc98C"
+    - "MYSQL_USERNAME=hackme"
+    - "MYSQL_PASSWORD=password"
+    - "MYSQL_HOST=hackme-mysql"
+    - "MYSQL_DB_NAME=hackme"
+    volumes:
+    - ./cmd/web/hackme/www:/www
+    - ./cmd/web/hackme/php/php.ini:/etc/php/7.0/fpm/php.ini
+    - ./cmd/web/hackme/php/php-fpm.conf:/etc/php/7.0/fpm/php-fpm.conf
+    links:
+    - hackme-mysql:mysql-host
+  hackme-mysql:
+    image: jsurf/rpi-mariadb:latest
+    restart: always
+    volumes:
+    - mdb:/var/lib/mysql
+    - ./cmd/web/hackme/hackme.sql:/docker-entrypoint-initdb.d/dump.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: bWZfayMGZDqYCFYsMsKx
+      MYSQL_USER: hackme
+      MYSQL_PASSWORD: GV0uwG5xBJSpX354cwGc
+      MYSQL_DATABASE: hackme
+
+  volumes:
+    mdb:

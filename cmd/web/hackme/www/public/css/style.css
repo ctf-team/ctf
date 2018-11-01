@@ -1,0 +1,11 @@
+div.alert.alert-success {
+    color: green;
+}
+
+div.alert.alert-danger {
+    color: red;
+}
+
+input[type="text"], input[type="password"], input[type="submit"] {
+    display: block;
+}
