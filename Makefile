@@ -3,17 +3,7 @@ build:
 
 rebuild: clear restart
 
-build-all: clear verify serverless-ctf attack-rtlo reverse-reverse1 restart
-
-verify:
-		@echo "Building challenge verify..."
-		@docker build -t verify -f docker/verify/Dockerfile .
-		@docker-compose up --no-deps -d verify
-
-serverless-ctf:
-		@echo "Building serverless-ctf..."
-		@docker build -t serverless-ctf -f docker/serverless-ctf/Dockerfile .
-		@docker-compose up --no-deps -d serverless-ctf
+build-all: clear attack-rtlo reverse-reverse1 restart
 
 # Attacks
 attack-rtlo:
@@ -27,6 +17,7 @@ reverse-reverse1:
 		@docker build -t reverse-reverse1 -f docker/reverse/reverse-1/Dockerfile .
 		@docker-compose up --no-deps -d reverse-reverse1
 
+# Web
 # Compose
 restart:
 		@echo "Pulling down docker-compose..."

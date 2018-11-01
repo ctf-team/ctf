@@ -64,5 +64,5 @@ services:
       MYSQL_PASSWORD: GV0uwG5xBJSpX354cwGc
       MYSQL_DATABASE: hackme
 
-  volumes:
-    mdb:
+volumes:
+  mdb:
