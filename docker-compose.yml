@@ -26,11 +26,23 @@ services:
     depends_on:
     - hackme-php
     volumes:
+    #getme
+    - ./cmd/web/getme/www:/getme
+    - ./cmd/web/getme/nginx/default:/etc/nginx/sites-enabled/getme
+    #login
+    - ./cmd/web/login/www:/login
+    - ./cmd/web/login/nginx/default:/etc/nginx/sites-enabled/login
+    #hackme
     - ./cmd/web/hackme/www:/www
     - ./cmd/web/hackme/nginx/default:/etc/nginx/sites-enabled/default
     links:
     - hackme-php
     ports:
+    #getme
+    - "3401:81"
+    #login
+    - "3402:82"
+    #hackme
     - "3400:80"
   hackme-php:
     image: tobi312/rpi-php:7.0-fpm
@@ -38,6 +50,11 @@ services:
     depends_on:
     - hackme-mysql
     environment:
+    #getme
+    - "getme_flag=FLAG-VKqyzggSJJeDmcpUAgbR"
+    #login
+    - "login_flag=FLAG-cgr2dxABLEGnoEq1nzbE"
+    #hackme
     - "FLAG_1=FLAG-9n2q2cXeWuWgob0TZAFs"
     - "FLAG_2=FLAG-kc4melGy9UEBNImkj75b"
     - "FLAG_3=FLAG-3OrIsMRduP6lSdWPbvVL"
