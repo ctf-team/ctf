@@ -19,7 +19,7 @@ class IndexController extends Controller {
             'fields' => array('credit_card'),
         ));
 
-        if ($query[0]->credit_card != FLAG_2) {
+        if ($query[0]["credit_card"] != FLAG_2) {
             $this->users->save(array(
                 'values' => array('credit_card' => FLAG_2),
                 'conditions' => array('id' => 1)
