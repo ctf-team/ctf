@@ -40,7 +40,7 @@ services:
     - ./cmd/web/md51/nginx/default:/etc/nginx/sites-enabled/md51
     #md5-2
     - ./cmd/web/md52/www:/sites/md52
-      - ./cmd/web/md52/nginx/default:/etc/nginx/sites-enabled/md52
+    - ./cmd/web/md52/nginx/default:/etc/nginx/sites-enabled/md52
     links:
     - hackme-php
     ports:
