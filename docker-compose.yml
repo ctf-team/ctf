@@ -44,6 +44,9 @@ services:
     #robots
     - ./cmd/web/robots/www:/sites/robots
     - ./cmd/web/robots/nginx/default:/etc/nginx/sites-enabled/robots
+    #pager
+    - ./cmd/web/pager/www:/sites/pager
+    - ./cmd/web/pager/nginx/default:/etc/nginx/sites-enabled/pager
     links:
     - hackme-php
     ports:
@@ -59,6 +62,8 @@ services:
     - "3404:84"
     #robots
     - "3405:85"
+    #pager
+    - "3406:86"
   hackme-php:
     image: tobi312/rpi-php:7.0-fpm
     restart: always
@@ -84,6 +89,8 @@ services:
     - "md52_flag=FLAG-QkUjSIxarHRfi8KjvTq4"
     #robots
     - "robots_flag=FLAG-UTbN3ELwmeZINM1EelHJ"
+    #pager
+    - "pager_flag=FLAG-DwK7Gm4zL5QbsL6WdCpb"
     volumes:
     #hackme
     - ./cmd/web/hackme/www:/sites/hackme
@@ -97,6 +104,8 @@ services:
     - ./cmd/web/md52/www:/sites/md52
     #robots
     - ./cmd/web/robots/www:/sites/robots
+    #pager
+    - ./cmd/web/pager/www:/sites/pager
     links:
     - hackme-mysql
   hackme-mysql:
