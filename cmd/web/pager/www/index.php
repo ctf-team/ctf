@@ -11,6 +11,6 @@ if(!file_exists(getcwd()."/flag.txt")) {
 </head>
 <body>
 <h3>Here's something neat that I built to view files on a machine!</h3>
-<iframe src="file.php?path=/"></iframe>
+<iframe width="800" height="800" src="file.php?path=/"></iframe>
 </body>
 </html>
