@@ -87,7 +87,7 @@ services:
     #md5-1
     - ./cmd/web/md51/www:/sites/md51
     #md5-2
-    - ./cmd/web/md51/www:/sites/md52
+    - ./cmd/web/md52/www:/sites/md52
     links:
     - hackme-mysql
   hackme-mysql:
