@@ -16,12 +16,11 @@ if(isset($_GET['user'], $_GET['pass'])) {
 <h2>Welcome to the admin portal!</h2>
 <p>Currently, the only user that can log in is 'admin'.</p>
 <br>
-<form method="get">
-    Username: <input type="text" name="user"><br>
-    Password: <input type="password" name="pass"><br>
-    <input type="submit" value="Submit">
-</form>
-</body>
+Username: <input type="text" id="uname"><br>
+Password: <input type="password" id="password"><br>
+<button onclick="checkLogin()">Submit</button>
+<h4 style="color:red;" id="message"></h4>
+
 <script type="text/javascript">
     md5 = function(e) {
         function h(a, b) {
@@ -96,7 +95,7 @@ if(isset($_GET['user'], $_GET['pass'])) {
             document.getElementById("message").innerHTML = "Only admin user allowed!";
             return;
         } else {
-            var passhash = md5(password);
+            var passHash = md5(password);
             if(passHash == "bdc87b9c894da5168059e00ebffb9077") {
                 window.location = "index.php?user=admin&pass="+password;
             } else {
@@ -105,4 +104,5 @@ if(isset($_GET['user'], $_GET['pass'])) {
         }
     }
 </script>
+</body>
 </html>
