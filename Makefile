@@ -18,6 +18,10 @@ reverse-reverse1:
 		@docker-compose up --no-deps -d reverse-reverse1
 
 # Web
+web:
+		@echo "Building web..."
+		@docker-compose up --no-deps -d hackme hackme-php
+
 # Compose
 restart:
 		@echo "Pulling down docker-compose..."

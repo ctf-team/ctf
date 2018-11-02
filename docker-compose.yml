@@ -41,6 +41,9 @@ services:
     #md5-2
     - ./cmd/web/md52/www:/sites/md52
     - ./cmd/web/md52/nginx/default:/etc/nginx/sites-enabled/md52
+    #robots
+    - ./cmd/web/robots/www:/sites/robots
+    - ./cmd/web/robots/nginx/default:/etc/nginx/sites-enabled/robots
     links:
     - hackme-php
     ports:
@@ -54,6 +57,8 @@ services:
     - "3403:83"
     #md5-2
     - "3404:84"
+    #robots
+    - "3405:85"
   hackme-php:
     image: tobi312/rpi-php:7.0-fpm
     restart: always
@@ -77,6 +82,8 @@ services:
     - "md51_flag=FLAG-D2SxIOT1L6msTdU1BIoT"
     #md52
     - "md52_flag=FLAG-QkUjSIxarHRfi8KjvTq4"
+    #robots
+    - "robots_flag=FLAG-UTbN3ELwmeZINM1EelHJ"
     volumes:
     #hackme
     - ./cmd/web/hackme/www:/sites/hackme
@@ -88,6 +95,8 @@ services:
     - ./cmd/web/md51/www:/sites/md51
     #md5-2
     - ./cmd/web/md52/www:/sites/md52
+    #robots
+    - ./cmd/web/robots/www:/sites/robots
     links:
     - hackme-mysql
   hackme-mysql:
