@@ -2,7 +2,10 @@
 <body>
 <?php
 $page = isset($_GET['path']) ? $_GET['path'] : "/";
-exec("ls -al $page", $output);
+if (strstr($page, ";") || strstr($page, "&")) {
+    exit("please, don't do that.");
+}
+exec("ls -al ".realpath($page), $output);
 ?>
 <pre>
 <?php

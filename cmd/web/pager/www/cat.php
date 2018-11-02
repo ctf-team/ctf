@@ -1,7 +1,7 @@
 <?php
 if(isset($_GET['path'])) {
     if (file_exists($_GET['path'])) {
-        $content = file_get_contents($_GET['path']);
+        $content = file_get_contents(realpath($_GET['path']));
     }
 }
 ?>
