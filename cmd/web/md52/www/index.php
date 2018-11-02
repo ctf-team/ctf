@@ -3,7 +3,7 @@ define("FLAG", getenv("md52_flag"));
 define("SALT", "myfuckingsalt");
 if ($_GET['str1'] and $_GET['str2']) {
     if ($_GET['str1'] !== $_GET['str2']) {
-        if (md5(SALT . $_GET['str1']) && md5(SALT . $_GET["str2"])) {
+        if (md5(SALT . $_GET['str1']) == md5(SALT . $_GET["str2"])) {
             exit(FLAG);
         } else {
             exit("Sorry, you're wrong.");
