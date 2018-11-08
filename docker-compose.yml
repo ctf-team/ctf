@@ -47,6 +47,9 @@ services:
     #pager
     - ./cmd/web/pager/www:/sites/pager
     - ./cmd/web/pager/nginx/default:/etc/nginx/sites-enabled/pager
+    #walloffire
+    - ./cmd/web/walloffire/www:/sites/walloffire
+    - ./cmd/web/walloffire/nginx/default:/etc/nginx/sites-enabled/walloffire
     links:
     - hackme-php
     ports:
@@ -64,21 +67,24 @@ services:
     - "3405:85"
     #pager
     - "3406:86"
+    #walloffire
+    - "3407:87"
   hackme-php:
     image: tobi312/rpi-php:7.0-fpm
     restart: always
     depends_on:
     - hackme-mysql
     environment:
+    - "MYSQL_USERNAME=hackme"
+    - "MYSQL_PASSWORD=GV0uwG5xBJSpX354cwGc"
+    - "MYSQL_HOST=hackme-mysql"
+    - "MYSQL_DB_NAME=hackme"
+    - "STEALME_MYSQL_DB_NAME=stealme"
     #hackme
     - "FLAG_1=FLAG-9n2q2cXeWuWgob0TZAFs"
     - "FLAG_2=FLAG-kc4melGy9UEBNImkj75b"
     - "FLAG_3=FLAG-3OrIsMRduP6lSdWPbvVL"
     - "FLAG_4=FLAG-S7Uu3j1tdex0VlZSc98C"
-    - "MYSQL_USERNAME=hackme"
-    - "MYSQL_PASSWORD=GV0uwG5xBJSpX354cwGc"
-    - "MYSQL_HOST=hackme-mysql"
-    - "MYSQL_DB_NAME=hackme"
     #getme
     - "getme_flag=FLAG-VKqyzggSJJeDmcpUAgbR"
     #login
@@ -91,6 +97,8 @@ services:
     - "robots_flag=FLAG-UTbN3ELwmeZINM1EelHJ"
     #pager
     - "pager_flag=FLAG-DwK7Gm4zL5QbsL6WdCpb"
+    #walloffire
+    - "walloffire_flag=FLAG-I46pBAhxule70HC5elnH"
     volumes:
     #hackme
     - ./cmd/web/hackme/www:/sites/hackme
@@ -106,6 +114,8 @@ services:
     - ./cmd/web/robots/www:/sites/robots
     #pager
     - ./cmd/web/pager/www:/sites/pager
+    #walloffire
+    - ./cmd/web/walloffire/www:/sites/walloffire
     links:
     - hackme-mysql
   hackme-mysql:
@@ -114,6 +124,7 @@ services:
     volumes:
     - mdb:/var/lib/mysql
     - ./cmd/web/hackme/hackme.sql:/docker-entrypoint-initdb.d/dump.sql
+    - ./cmd/web/stealme/stealme.sql:/docker-entrypoint-initdb.d/stealme.sql
     environment:
       MYSQL_ROOT_PASSWORD: bWZfayMGZDqYCFYsMsKx
       MYSQL_USER: hackme

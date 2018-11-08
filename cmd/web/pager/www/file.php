@@ -1,7 +1,7 @@
 <html>
 <body>
 <?php
-$page = isset($_GET['path']) ? $_GET['path'] : "/";
+$page = (isset($_GET['path']) && !empty($_GET['path'])) ? $_GET['path'] : "/";
 if (strstr($page, ";") || strstr($page, "&")) {
     exit("please, don't do that.");
 }
