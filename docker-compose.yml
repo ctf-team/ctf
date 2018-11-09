@@ -17,6 +17,8 @@ services:
   reverse-reverse1:
     image: reverse-reverse1:latest
     restart: always
+    environment:
+    - "reverse1_flag=FLAG-gTwJDjCGPFfEruCQFs8z"
     ports:
     - "3335:3333"
   # Web

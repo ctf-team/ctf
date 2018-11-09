@@ -4,8 +4,8 @@
 
 char *getflag(char *yourName)
 {
-        char name[25];
-        char filePath[29];
+        char name[1024];
+        char filePath[1024];
 
         strcpy(filePath, "/assets/nonexistant-flag.txt");
         strcpy(name, yourName);
@@ -14,7 +14,7 @@ char *getflag(char *yourName)
         fflush(stdout);
 
         if (strstr(filePath, "/assets/flag.txt")) {
-                char *flag = "FLAG-gTwJDjCGPFfEruCQFs8z";
+                char *flag = getenv("reverse1_flag");
                 return flag;
         }
 
