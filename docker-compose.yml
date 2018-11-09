@@ -52,6 +52,9 @@ services:
     #walloffire
     - ./cmd/web/walloffire/www:/sites/walloffire
     - ./cmd/web/walloffire/nginx/default:/etc/nginx/sites-enabled/walloffire
+    #setme
+    - ./cmd/web/setme/www:/sites/setme
+    - ./cmd/web/setme/nginx/default:/etc/nginx/sites-enabled/setme
     links:
     - hackme-php
     ports:
@@ -71,6 +74,8 @@ services:
     - "3406:86"
     #walloffire
     - "3407:87"
+    #setme
+    - "3408:88"
   hackme-php:
     image: tobi312/rpi-php:7.0-fpm
     restart: always
@@ -101,6 +106,8 @@ services:
     - "pager_flag=FLAG-DwK7Gm4zL5QbsL6WdCpb"
     #walloffire
     - "walloffire_flag=FLAG-I46pBAhxule70HC5elnH"
+    #setme
+    - "setme_flag=FLAG-crcdVVEmXxan4H59QziB"
     volumes:
     #hackme
     - ./cmd/web/hackme/www:/sites/hackme
@@ -118,6 +125,8 @@ services:
     - ./cmd/web/pager/www:/sites/pager
     #walloffire
     - ./cmd/web/walloffire/www:/sites/walloffire
+    #setme
+    - ./cmd/web/setme/www:/sites/setme
     links:
     - hackme-mysql
   hackme-mysql:
