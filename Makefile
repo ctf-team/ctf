@@ -3,7 +3,12 @@ build:
 
 rebuild: clear restart
 
-build-all: clear attack-rtlo reverse-reverse1 restart
+build-all: clear explorer attack-rtlo reverse-reverse1 restart
+
+# Explorer
+explorer:
+		@echo "Bringing up explorer..."
+		@docker-compose up --no-deps -d explorer
 
 # Attacks
 attack-rtlo:
