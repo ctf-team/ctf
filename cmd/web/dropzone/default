@@ -1,6 +1,6 @@
 server {
         listen 90;
-        root /sites/breakme;
+        root /sites/dropzone;
         index index.html index.htm index.php;
         server_name _;
 
