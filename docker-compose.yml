@@ -27,6 +27,7 @@ services:
     restart: always
     ports:
     - "3500:22"
+    hostname: explorer
     command: >
       bash -c "apk update
       && apk --no-cache add openssh-server zip
@@ -37,7 +38,6 @@ services:
       && rm flag.txt
       && /usr/bin/ssh-keygen -A
       && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-      && echo 'explorer' > /etc/hostname
       && echo '' > /etc/motd
       && /usr/sbin/sshd -D"
   hackme:
