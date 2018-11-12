@@ -28,11 +28,11 @@ services:
     ports:
     - "3500:22"
     command: >
-    bash -c "apk --no-cache add openssh-server zip
-    && echo 'root:pwB!v^Kf0C2oBXpX178K#@gg9%L@acaD' | chpasswd
-    && echo -e 'FLAG-faF5hvdVAtFELWWpc439' > /root/flag.txt
-    && zip --password 'password123' /root/flag.zip -r /root/flag.txt
-    && rm /root/flag.txt"
+      bash -c "apk --no-cache add openssh-server zip
+      && echo 'root:pwB!v^Kf0C2oBXpX178K#@gg9%L@acaD' | chpasswd
+      && echo -e 'FLAG-faF5hvdVAtFELWWpc439' > /root/flag.txt
+      && zip --password 'password123' /root/flag.zip -r /root/flag.txt
+      && rm /root/flag.txt"
   hackme:
     image: tobi312/rpi-nginx:latest
     restart: always
