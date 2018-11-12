@@ -27,6 +27,11 @@ web:
 		@echo "Building web..."
 		@docker-compose up --no-deps -d hackme hackme-php
 
+# Web
+breakme:
+		@echo "Building breakme..."
+		@docker-compose up --no-deps -d breakme breakme-php
+
 # Compose
 restart:
 		@echo "Pulling down docker-compose..."
