@@ -45,6 +45,7 @@ services:
     restart: always
     depends_on:
     - hackme-php
+    - breakme-php
     volumes:
     #hackme
     - ./cmd/web/hackme/www:/sites/hackme
@@ -78,6 +79,7 @@ services:
     - ./cmd/web/explorer/default:/etc/nginx/sites-enabled/explorer
     links:
     - hackme-php
+    - breakme-php
     ports:
     #hackme
     - "3400:80"
@@ -104,7 +106,6 @@ services:
     restart: always
     depends_on:
     - hackme-mysql
-    - breakme-php
     environment:
     - "MYSQL_USERNAME=hackme"
     - "MYSQL_PASSWORD=GV0uwG5xBJSpX354cwGc"
@@ -155,7 +156,6 @@ services:
     - ./cmd/web/explorer/www:/sites/explorer
     links:
     - hackme-mysql
-    - breakme-php
   hackme-mysql:
     image: jsurf/rpi-mariadb:latest
     restart: always
