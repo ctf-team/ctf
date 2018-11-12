@@ -30,7 +30,7 @@ web:
 # Web
 breakme:
 		@echo "Building breakme..."
-		@docker-compose up --no-deps -d breakme breakme-php
+		@docker-compose up --no-deps -d breakme-web breakme-php
 
 # Compose
 restart:
