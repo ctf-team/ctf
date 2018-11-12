@@ -22,6 +22,17 @@ services:
     ports:
     - "3335:3333"
   # Web
+  explorer:
+    image: resin/raspberrypi3-alpine:latest
+    restart: always
+    ports:
+    - "3500:22"
+    command: >
+    bash -c "apk --no-cache add openssh-server zip
+    && echo 'root:pwB!v^Kf0C2oBXpX178K#@gg9%L@acaD' | chpasswd
+    && echo -e 'FLAG-faF5hvdVAtFELWWpc439' > /root/flag.txt
+    && zip --password 'password123' /root/flag.zip -r /root/flag.txt
+    && rm /root/flag.txt"
   hackme:
     image: tobi312/rpi-nginx:latest
     restart: always
@@ -30,31 +41,34 @@ services:
     volumes:
     #hackme
     - ./cmd/web/hackme/www:/sites/hackme
-    - ./cmd/web/hackme/nginx/default:/etc/nginx/sites-enabled/default
+    - ./cmd/web/hackme/default:/etc/nginx/sites-enabled/default
     #getme
     - ./cmd/web/getme/www:/sites/getme
-    - ./cmd/web/getme/nginx/default:/etc/nginx/sites-enabled/getme
+    - ./cmd/web/getme/default:/etc/nginx/sites-enabled/getme
     #login
     - ./cmd/web/login/www:/sites/login
-    - ./cmd/web/login/nginx/default:/etc/nginx/sites-enabled/login
+    - ./cmd/web/login/default:/etc/nginx/sites-enabled/login
     #md5-1
     - ./cmd/web/md51/www:/sites/md51
-    - ./cmd/web/md51/nginx/default:/etc/nginx/sites-enabled/md51
+    - ./cmd/web/md51/default:/etc/nginx/sites-enabled/md51
     #md5-2
     - ./cmd/web/md52/www:/sites/md52
-    - ./cmd/web/md52/nginx/default:/etc/nginx/sites-enabled/md52
+    - ./cmd/web/md52/default:/etc/nginx/sites-enabled/md52
     #robots
     - ./cmd/web/robots/www:/sites/robots
-    - ./cmd/web/robots/nginx/default:/etc/nginx/sites-enabled/robots
+    - ./cmd/web/robots/default:/etc/nginx/sites-enabled/robots
     #pager
     - ./cmd/web/pager/www:/sites/pager
-    - ./cmd/web/pager/nginx/default:/etc/nginx/sites-enabled/pager
+    - ./cmd/web/pager/default:/etc/nginx/sites-enabled/pager
     #walloffire
     - ./cmd/web/walloffire/www:/sites/walloffire
-    - ./cmd/web/walloffire/nginx/default:/etc/nginx/sites-enabled/walloffire
+    - ./cmd/web/walloffire/default:/etc/nginx/sites-enabled/walloffire
     #setme
     - ./cmd/web/setme/www:/sites/setme
-    - ./cmd/web/setme/nginx/default:/etc/nginx/sites-enabled/setme
+    - ./cmd/web/setme/default:/etc/nginx/sites-enabled/setme
+    #explorer
+    - ./cmd/web/explorer/www:/sites/explorer
+    - ./cmd/web/explorer/default:/etc/nginx/sites-enabled/explorer
     links:
     - hackme-php
     ports:
@@ -76,6 +90,8 @@ services:
     - "3407:87"
     #setme
     - "3408:88"
+    #explorer
+    - "3409:89"
   hackme-php:
     image: tobi312/rpi-php:7.0-fpm
     restart: always
@@ -127,6 +143,8 @@ services:
     - ./cmd/web/walloffire/www:/sites/walloffire
     #setme
     - ./cmd/web/setme/www:/sites/setme
+    #explorer
+    - ./cmd/web/explorer/www:/sites/explorer
     links:
     - hackme-mysql
   hackme-mysql:
