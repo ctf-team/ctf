@@ -45,7 +45,6 @@ services:
     restart: always
     depends_on:
     - hackme-php
-    - breakme-php
     volumes:
     #hackme
     - ./cmd/web/hackme/www:/sites/hackme
@@ -79,7 +78,6 @@ services:
     - ./cmd/web/explorer/default:/etc/nginx/sites-enabled/explorer
     links:
     - hackme-php
-    - breakme-php
     ports:
     #hackme
     - "3400:80"
@@ -175,7 +173,7 @@ services:
     - breakme-php
     volumes:
     - ./cmd/web/dropzone/www:/sites/dropzone
-    - ./cmd/web/dropzone/default:/etc/nginx/sites-enabled/dropzone
+    - ./cmd/web/dropzone/default:/etc/nginx/sites-enabled/default
     links:
     - breakme-php
     ports:
