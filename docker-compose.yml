@@ -35,6 +35,7 @@ services:
       && zip --password 'password123' /root/flag.zip -r /root/flag.txt
       && rm /root/flag.txt
       && /usr/bin/ssh-keygen -A
+      && sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
       && /usr/sbin/sshd -D"
   hackme:
     image: tobi312/rpi-nginx:latest
