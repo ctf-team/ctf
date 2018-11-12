@@ -34,6 +34,7 @@ services:
       && echo -e 'FLAG-faF5hvdVAtFELWWpc439' > /root/flag.txt
       && zip --password 'password123' /root/flag.zip -r /root/flag.txt
       && rm /root/flag.txt
+      && /usr/bin/ssh-keygen -A
       && /usr/sbin/sshd -D"
   hackme:
     image: tobi312/rpi-nginx:latest
