@@ -4,6 +4,10 @@ server {
         index index.html index.htm index.php;
         server_name _;
 
+        location /assets {
+            autoindex on;
+        }
+
         location ~ \.php$ {
                 if ($http_user_agent ~* WordPress) {
                         return 444;
