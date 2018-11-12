@@ -31,11 +31,14 @@ services:
       bash -c "apk update
       && apk --no-cache add openssh-server zip
       && echo 'root:pwB!v^Kf0C2oBXpX178K#@gg9%L@acaD' | chpasswd
-      && echo -e 'FLAG-faF5hvdVAtFELWWpc439' > /root/flag.txt
-      && zip --password 'password123' /root/flag.zip -r /root/flag.txt
-      && rm /root/flag.txt
+      && cd /root
+      && echo -e 'FLAG-faF5hvdVAtFELWWpc439' > flag.txt
+      && zip --password 'password123' flag.zip -r flag.txt
+      && rm flag.txt
       && /usr/bin/ssh-keygen -A
       && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+      && echo 'explorer' > /etc/hostname
+      && echo '' > /etc/motd
       && /usr/sbin/sshd -D"
   hackme:
     image: tobi312/rpi-nginx:latest
