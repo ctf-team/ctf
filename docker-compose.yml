@@ -166,6 +166,23 @@ services:
       MYSQL_USER: hackme
       MYSQL_PASSWORD: GV0uwG5xBJSpX354cwGc
       MYSQL_DATABASE: hackme
+  breakme-web:
+    image: tobi312/rpi-nginx:latest
+    restart: always
+    depends_on:
+    - breakme-php
+    volumes:
+    - ./cmd/web/dropzone/www:/sites/dropzone
+    - ./cmd/web/dropzone/default:/etc/nginx/sites-enabled/dropzone
+    links:
+    - breakme-php
+    ports:
+    - "3410:90"
+  breakme-php:
+    image: tobi312/rpi-php:7.0-fpm
+    restart: always
+    volumes:
+    - ./cmd/web/dropzone/www:/sites/dropzone
 
 volumes:
   mdb:
