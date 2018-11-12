@@ -104,6 +104,7 @@ services:
     restart: always
     depends_on:
     - hackme-mysql
+    - breakme-php
     environment:
     - "MYSQL_USERNAME=hackme"
     - "MYSQL_PASSWORD=GV0uwG5xBJSpX354cwGc"
@@ -154,6 +155,7 @@ services:
     - ./cmd/web/explorer/www:/sites/explorer
     links:
     - hackme-mysql
+    - breakme-php
   hackme-mysql:
     image: jsurf/rpi-mariadb:latest
     restart: always
