@@ -186,7 +186,7 @@ services:
     - ./cmd/web/dropzone/html:/var/www
     command: >
       bash -c "apt update
-      && apt install python2.7
-      && /docker-entrypoint.sh php7.0-fpm"
+      && apt install python2.7"
+      && bash /docker-entrypoint.sh php7.0-fpm
 volumes:
   mdb:
