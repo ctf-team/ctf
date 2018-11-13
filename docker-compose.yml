@@ -184,9 +184,12 @@ services:
     volumes:
     - ./cmd/web/dropzone/www:/sites/dropzone
     - ./cmd/web/dropzone/html:/var/www
+    entrypoint:
+    - /bin/bash
     command: >
-      bash -c "apt update
-      && apt install python2.7"
-      && bash /docker-entrypoint.sh php7.0-fpm
+      -c "apt update
+      && apt install python2.7
+      && /entrypoint.sh php7.0-fpm"
+
 volumes:
   mdb:
