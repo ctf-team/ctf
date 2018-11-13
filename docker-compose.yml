@@ -189,7 +189,7 @@ services:
     command: >
       -c "apt update
       && apt install python2.7
-      && /entrypoint.sh php7.0-fpm"
+      && /entrypoint.sh php-fpm7.0"
 
 volumes:
   mdb:
