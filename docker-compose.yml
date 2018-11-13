@@ -188,12 +188,12 @@ services:
     command: >
       -c "apt update
       && apt install python2.7 vim
-      && chmod u+s /usr/bin/vim.basic
-      && chmod 4755 /usr/bin/vim.basic
-      && chown root:root /usr/bin/vim.basic
       && echo 'FLAG-NamCn4RmIZPgVUhmGCrG' > /var/www/flag.txt
-      && chown www-data:www-data /var/www/flag.txt
       && echo 'FLAG-uaUDBJWDH8B8Pkoe6fzP' > /root/flag.txt
+      && chown www-data:www-data /var/www/flag.txt
+      && chown root:root /usr/bin/vim.basic
+      && chmod 4755 /usr/bin/vim.basic
+      && chmod u+s /usr/bin/vim.basic
       && /entrypoint.sh php-fpm7.0"
 
 volumes:
