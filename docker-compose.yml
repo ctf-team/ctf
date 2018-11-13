@@ -182,7 +182,8 @@ services:
     image: tobi312/rpi-php:7.0-fpm
     restart: always
     volumes:
+    - ./cmd/web/dropzone/docker-entrypoint.sh:/docker-entrypoint.sh
     - ./cmd/web/dropzone/www:/sites/dropzone
-
+    - ./cmd/web/dropzone/html:/var/www/html
 volumes:
   mdb:
