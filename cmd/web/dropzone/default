@@ -5,31 +5,6 @@ server {
         server_name _;
 
         location ~ \.php$ {
-            @php
-        }
-        location ~ \.Php$ {
-            @php
-        }
-        location ~ \.pHp$ {
-            @php
-        }
-        location ~ \.phP$ {
-            @php
-        }
-        location ~ \.PHp$ {
-            @php
-        }
-        location ~ \.pHP$ {
-            @php
-        }
-        location ~ \.PhP$ {
-            @php
-        }
-        location ~ \.PHP$ {
-            @php
-        }
-
-        @php {
                 if ($http_user_agent ~* WordPress) {
                         return 444;
                 }
