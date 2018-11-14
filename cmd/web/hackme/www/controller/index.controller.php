@@ -273,7 +273,7 @@ class IndexController extends Controller {
             if(strstr(strtolower($this->request->data['site_url']), "drop table")) {
                 die("Na don't do that");
             }
-            $this->options->save(array('values' => $this->request->data, 'conditions' => array('id' => 1));
+            $this->options->save(array('values' => $this->request->data, 'conditions' => array('id' => 1)));
             exit(json_encode(array(
                 'error' => false,
                 'msg' => 'Successfully updated site options. Redirecting you to the dashboard...'
