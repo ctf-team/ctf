@@ -247,6 +247,7 @@ class IndexController extends Controller {
         $this->set(array(
             'title' => 'Site Options',
             'site' => $siteurl[0]['site_url'],
+            'site_title' => $siteurl[0]['site_title'],
             'user' => $this->auth->user()
         ));
 
@@ -272,7 +273,7 @@ class IndexController extends Controller {
             if(strstr(strtolower($this->request->data['site_url']), "drop table")) {
                 die("Na don't do that");
             }
-            $this->options->rawquery("UPDATE options SET `site_url`='".$this->request->data['site_url']."' WHERE id = 1");
+            $this->options->save(array('values' => $this->request->data, 'conditions' => array('id' => 1));
             exit(json_encode(array(
                 'error' => false,
                 'msg' => 'Successfully updated site options. Redirecting you to the dashboard...'

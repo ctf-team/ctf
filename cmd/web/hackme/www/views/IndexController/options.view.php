@@ -7,7 +7,7 @@
                         <label class="c-field__label">Site URL</label>
                         <input class="c-input u-mb-small" type="text" name="site_url" value="<?php echo $site; ?>">
                         <!--<label class="c-field__label">Site Title</label>
-                        <input class="c-input u-mb-small" type="text" name="site_title" value="Neat">-->
+                        <input class="c-input u-mb-small" type="text" name="site_title" value="<?php echo $site_title; ?>">-->
                     </div>
                     <button class="c-btn c-btn--fullwidth c-btn--info">Save</button>
                 </form>
