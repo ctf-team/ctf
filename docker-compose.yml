@@ -37,7 +37,7 @@ services:
       && echo 'exp:pwB!v^Kf0C2oBXpX178K#@gg9%L@acaD' | chpasswd
       && cd /home/exp
       && echo -e 'FLAG-faF5hvdVAtFELWWpc439' > flag.txt
-      && zip --password 'password123' flag.zip -r flag.txt
+      && zip --password 'aafuck' flag.zip -r flag.txt
       && rm flag.txt
       && /usr/bin/ssh-keygen -A
       && echo '' > /etc/motd
