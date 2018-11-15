@@ -32,13 +32,14 @@ services:
     command: >
       bash -c "apk update
       && apk --no-cache add openssh-server zip
-      && echo 'root:pwB!v^Kf0C2oBXpX178K#@gg9%L@acaD' | chpasswd
-      && cd /root
+      && mkdir /home/exp
+      && adduser -h /home/exp -s /bin/bash -D exp 
+      && echo 'exp:pwB!v^Kf0C2oBXpX178K#@gg9%L@acaD' | chpasswd
+      && cd /home/exp
       && echo -e 'FLAG-faF5hvdVAtFELWWpc439' > flag.txt
       && zip --password 'password123' flag.zip -r flag.txt
       && rm flag.txt
       && /usr/bin/ssh-keygen -A
-      && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
       && echo '' > /etc/motd
       && /usr/sbin/sshd -D"
   hackme:
