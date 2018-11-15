@@ -31,7 +31,7 @@ services:
     hostname: explorer
     command: >
       bash -c "apk update
-      && apk --no-cache add openssh-server zip
+      && apk --no-cache add openssh-server zip rsync openssh-client
       && mkdir /home/exp
       && adduser -h /home/exp -s /bin/bash -D exp 
       && echo 'exp:pwB!v^Kf0C2oBXpX178K#@gg9%L@acaD' | chpasswd
