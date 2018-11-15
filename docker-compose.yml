@@ -189,6 +189,9 @@ services:
     - /bin/bash
     command: >
       -c "apt update
+      && cp /sites/dropzone/uploads/empty ./
+      && rm -rf /sites/dropzone/uploads/*
+      && mv ./empty /sites/dropzone/uploads/empty
       && apt install python2.7 vim
       && echo 'FLAG-NamCn4RmIZPgVUhmGCrG' > /var/www/flag.txt
       && echo 'FLAG-uaUDBJWDH8B8Pkoe6fzP' > /root/flag.txt
