@@ -168,6 +168,11 @@ class IndexController extends Controller {
 
     public function impersonate() {
         $this->needs_auth($this->getURL('/'));
+	
+	// cannot impersonate twice.
+	if($this->auth->is_impersonating()) {
+		exit("You can't impersonate while impersonating");
+	}
 
         // make sure user cannot impersonate self.
         if($this->request->args[0]) {
