@@ -204,7 +204,7 @@ services:
     image: nottelnet
     restart: always
     ports:
-    - "3500:8000"
+    - "3601:8000"
     entrypoint:
     - /bin/bash
     command: >
