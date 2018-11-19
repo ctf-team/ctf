@@ -6,7 +6,7 @@ RUN mkdir /app
 WORKDIR /app
 COPY ./cmd/attack/nottelnet/ ./
 
-RUN gcc *.c -o /app
+RUN gcc *.c -o /app/app
 
 FROM scratch
 FROM resin/raspberrypi3-alpine:latest
@@ -20,7 +20,7 @@ RUN echo 'dvr ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 RUN mkdir -p /app/recordings
 WORKDIR /app
-COPY --from=builder /app ./
+COPY --from=builder /app/app ./
 RUN chmod +x ./app
 
 RUN echo -e "admin:$dahua$4WzwxXxM\n" > /app/auth.bin

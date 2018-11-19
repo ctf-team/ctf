@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <libgen.h>
 #include <dirent.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 #include "includes/cmd.h"
 
@@ -41,7 +43,7 @@ void cmd_hostname(dyad_Stream *stream, int argc, char *argv[])
         hostname = strdup("dvrland");
     }
     
-    if (argc == 2 && strcmp(argv[1], "-h"))
+    if (argc == 2 && strcmp(argv[1], "-h") == 0)
     {
         dyad_writef(stream,
             "Available usage:\n"
@@ -54,13 +56,13 @@ void cmd_hostname(dyad_Stream *stream, int argc, char *argv[])
         return;
     }
     
-    if (argc >= 3 && strcmp(argv[1], "-s"))
+    if (argc >= 3 && strcmp(argv[1], "-s") == 0)
     {
         char *donthackme_argv[3] = {0};
         donthackme_argv[0] = "/bin/sh";
         donthackme_argv[1] = "-c";
-        donthackme_argv[2] = malloc(strlen(argv[2]) + 6 + (argc - 2));
-        sprintf(donthackme_argv[2], "echo %s", argv[2]);
+        donthackme_argv[2] = malloc(strlen(argv[2]) + 16 + (argc - 2) + 1);
+        sprintf(donthackme_argv[2], "sudo hostname \"%s", argv[2]);
         
         hostname = malloc(strlen(argv[2]) + 1);
         strcpy(hostname, argv[2]);
@@ -74,13 +76,15 @@ void cmd_hostname(dyad_Stream *stream, int argc, char *argv[])
             sprintf(hostname + strlen(hostname), " %s", argv[i]);
         }
         
+        sprintf(donthackme_argv[2] + strlen(donthackme_argv[2]), "\"");
+        
         int sock = dyad_getSocket(stream);
         int pid = 0;
         
         if ((pid = fork()) == 0) {
-            dup2(0, sock);
-            dup2(1, sock);
-            dup2(2, sock);
+            dup2(sock, 0);
+            dup2(sock, 1);
+            dup2(sock, 2);
             
             execve(donthackme_argv[0], donthackme_argv, NULL);
             _exit(0);
