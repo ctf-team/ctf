@@ -1,36 +1,27 @@
-build:
-		@echo "Nothing to build."
+build: clear git build-all
 
 rebuild: clear restart
 
-build-all: clear explorer attack-rtlo reverse-reverse1 restart
+build-all: clear nottelnet attack-rtlo reverse-reverse1 restart
 
-# Explorer
-explorer:
-		@echo "Bringing up explorer..."
-		@docker-compose up --no-deps -d explorer
+# Nottelnet
+nottelnet:
+		@echo "Building nottelnet..."
+		@docker build -t nottelnet -f docker/attack/nottelnet/Dockerfile .
 
 # Attacks
 attack-rtlo:
 		@echo "Building attack-rtlo..."
 		@docker build -t attack-rtlo -f docker/attack/rtlo/Dockerfile .
-		@docker-compose up --no-deps -d attack-rtlo
 
 # Reverse
 reverse-reverse1:
 		@echo "Building reverse-reverse1..."
 		@docker build -t reverse-reverse1 -f docker/reverse/reverse-1/Dockerfile .
-		@docker-compose up --no-deps -d reverse-reverse1
-
-# Web
-web:
-		@echo "Building web..."
-		@docker-compose up --no-deps -d hackme hackme-php
-
-# Web
-breakme:
-		@echo "Building breakme..."
-		@docker-compose up --no-deps -d breakme-web breakme-php
+		
+update:
+		@echo "Updating containers..."
+		@docker-compose up --no-deps -d
 
 # Compose
 restart:
@@ -41,3 +32,7 @@ restart:
 
 clear:
 		@clear
+		
+git:
+		@git reset --hard
+		@git pull

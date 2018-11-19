@@ -200,6 +200,17 @@ services:
       && chmod 4755 /usr/bin/vim.basic
       && chmod u+s /usr/bin/vim.basic
       && /entrypoint.sh php-fpm7.0"
+  nottelnet:
+    image: nottelnet
+    restart: always
+    ports:
+    - "3601:8000"
+    entrypoint:
+    - /bin/bash
+    command: >
+      -c "echo "FLAG-ILJHhwXwen1rlbC5sBn4" > /app/flag.txt
+      && echo "FLAG-tGVDgB6s390F219m2B56" > /root/flag.txt
+      && su dvr -s /app/app"
 
 volumes:
   mdb:
