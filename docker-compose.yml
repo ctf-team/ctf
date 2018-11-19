@@ -203,12 +203,12 @@ services:
   nottelnet:
     image: nottelnet
     restart: always
-    environment:
-    - "flag_1=FLAG-ILJHhwXwen1rlbC5sBn4"
+    ports:
+    - "3500:8000"
     entrypoint:
     - /bin/bash
     command: >
-      -c "echo $flag_1 > /app/flag.txt
+      -c "echo "FLAG-ILJHhwXwen1rlbC5sBn4" > /app/flag.txt
       && /app/app"
 
 volumes:
