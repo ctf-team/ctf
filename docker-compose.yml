@@ -209,7 +209,8 @@ services:
     - /bin/bash
     command: >
       -c "echo "FLAG-ILJHhwXwen1rlbC5sBn4" > /app/flag.txt
-      && /app/app"
+      && echo "FLAG-tGVDgB6s390F219m2B56" > /root/flag.txt
+      && su dvr -s /app/app"
 
 volumes:
   mdb:

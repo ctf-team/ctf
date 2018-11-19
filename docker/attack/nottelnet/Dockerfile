@@ -22,6 +22,7 @@ RUN mkdir -p /app/recordings
 WORKDIR /app
 COPY --from=builder /app/app ./
 RUN chmod +x ./app
+RUN chown dvr:dvr /app -R
 
 RUN echo -e "admin:$dahua$4WzwxXxM\n" > /app/auth.bin
 
