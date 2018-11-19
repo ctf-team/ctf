@@ -29,31 +29,22 @@ void handleCommand(dyad_Event *e)
         argc++;
     }
     
-    /*dyad_writef(e->stream, "argc: %d\n", argc);
+    /*
+    dyad_writef(e->stream, "argc: %d\n", argc);
     for (i = 0; i < argc; i++)
     {
         dyad_writef(e->stream, "argv[%d] = \"%s\"\n", i, argv[i]);
-    }*/
+    }
+    */
     
     for (i = 0; i < sizeof(commands) / sizeof(struct command_t); i++) {
-        if (strcmp(argv[0], commands[i].name) == 0)
-            return commands[i].func(e->stream, argc, argv);
-    }
-}
-
-void cmd_help(dyad_Stream *stream, int argc, char *argv[])
-{
-    dyad_writef(stream, 
-        "-=-=-=-China Town DVR v1.03-=-=-=-\n"
-        "Available Commands:\n"
-    );
-    
-    int i;
-    for (i = 0; i < sizeof(commands) / sizeof(struct command_t); i++) {
-        if (commands[i].authenticated && !connection_authenticated)
-            continue;
-        dyad_writef(stream, " %s", commands[i].name);
+        if (strcmp(argv[0], commands[i].name) == 0 && connection_authenticated >= commands[i].authenticated) {
+            commands[i].func(e->stream, argc, argv);
+            dyad_writef(e->stream, "$ ");
+            return;
+        }
     }
     
-    dyad_writef(stream, "\n");
+    // Command not found.
+    dyad_writef(e->stream, "Command not found.\n$ ");
 }

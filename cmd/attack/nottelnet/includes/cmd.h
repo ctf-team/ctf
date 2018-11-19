@@ -12,17 +12,29 @@ struct command_t {
 };
 extern int connection_authenticated;
 
-// command_help.c
+// cmd_help.c
 void cmd_help(dyad_Stream *stream, int argc, char *argv[]);
 
-
-// command_record.c
+// cmd_record.c
 void cmd_record(dyad_Stream *stream, int argc, char *argv[]);
+
+// cmd_login.c
+void cmd_login(dyad_Stream *stream, int argc, char *argv[]);
+
+// cmd_utils.c
+void cmd_mac_address(dyad_Stream *stream, int argc, char *argv[]);
+void cmd_ip_address(dyad_Stream *stream, int argc, char *argv[]);
+void cmd_hostname(dyad_Stream *stream, int argc, char *argv[]);
+
 
 
 static struct command_t commands[] = {
     {"help", 0, cmd_help},
     {"record", 0, cmd_record},
+    {"login", 0, cmd_login},
+    {"mac", 1, cmd_mac_address},
+    {"ip", 1, cmd_ip_address},
+    {"hostname", 1, cmd_hostname}
 };
 
 

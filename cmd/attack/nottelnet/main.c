@@ -16,9 +16,9 @@ static void onAccept(dyad_Event *e)
     printf("Accepted new connection\n");
     if (fork() == 0) {
         dyad_close(server_stream);
-        dyad_addListener(e->remote, DYAD_EVENT_DATA, handleCommand, NULL);
+        dyad_addListener(e->remote, DYAD_EVENT_LINE, handleCommand, NULL);
         
-        dyad_writef(e->remote, "Echo server\n");
+        dyad_writef(e->remote, "$ ");
         
         while (dyad_getStreamCount() > 0) {
             dyad_update();

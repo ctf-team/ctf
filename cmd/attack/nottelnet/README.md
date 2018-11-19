@@ -1,3 +1,9 @@
+how to hack this
+step 1: directory traversal
+step 2: login with info from users.bin
+step 3: get a shell
+step 4: sudo cat /root/flag.txt
+
 - file structure
     - auth.bin
     - flag.txt

@@ -200,6 +200,16 @@ services:
       && chmod 4755 /usr/bin/vim.basic
       && chmod u+s /usr/bin/vim.basic
       && /entrypoint.sh php-fpm7.0"
+  nottelnet:
+    image: nottelnet
+    restart: always
+    environment:
+    - "flag_1=FLAG-ILJHhwXwen1rlbC5sBn4"
+    entrypoint:
+    - /bin/bash
+    command: >
+      -c "echo $flag_1 > /app/flag.txt
+      && /app/app"
 
 volumes:
   mdb:
