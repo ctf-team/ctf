@@ -4,7 +4,7 @@ RUN apk add --no-cache --virtual build-dependencies build-base gcc wget git make
 
 RUN mkdir /app
 WORKDIR /app
-COPY ./cmd/attack/nottelnet/ ./
+COPY . ./
 
 RUN gcc *.c -o /app/app
 

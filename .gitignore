@@ -13,3 +13,6 @@
 
 /vendor/
 /cmd/attack/nottelnet/bin/
+
+__pycache__
+*.pyc
