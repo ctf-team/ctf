@@ -15,7 +15,7 @@ services:
     ports:
     - "3334:3333"
     build:
-      context: ./
+      context: .
       dockerfile: ./docker/attack/rtlo/Dockerfile
   # Reverse
   reverse-reverse1:
@@ -211,7 +211,7 @@ services:
     entrypoint:
     - /bin/bash
     build:
-      context: ./cmd/attack/nottelnet/
+      context: .
       dockerfile: ./docker/attack/nottelnet/Dockerfile
     command: >
       -c "echo "FLAG-ILJHhwXwen1rlbC5sBn4" > /app/flag.txt
@@ -224,7 +224,7 @@ services:
     environment:
       - "flag=FLAG-Ke9LExhmYbDzLe4su7GB"
     build:
-      context: ./cmd/attack/timeapi/
+      context: .
       dockerfile: ./docker/attack/timeapi/Dockerfile
 
 volumes:

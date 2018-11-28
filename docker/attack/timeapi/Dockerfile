@@ -4,7 +4,7 @@ RUN mkdir /app
 
 WORKDIR /app
 
-COPY . ./
+COPY ./cmd/attack/timeapi/ ./
 
 RUN rm ./solution.py
 
