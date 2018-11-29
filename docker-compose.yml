@@ -220,7 +220,7 @@ services:
   timeapi:
     image: timeapi
     ports:
-      - "3905:3000"
+      - "3905:3001"
     environment:
       - "flag=FLAG-Ke9LExhmYbDzLe4su7GB"
     build:
