@@ -200,24 +200,21 @@ services:
     image: tobi312/rpi-nginx:latest
     restart: always
     depends_on:
-      - breakme-php
+    - pager-php
     volumes:
-      - ./cmd/web/pager/www:/sites/pager
-      - ./cmd/web/pager/default:/etc/nginx/sites-enabled/pager
+    - ./cmd/web/pager/www:/sites/pager
+    - ./cmd/web/pager/default:/etc/nginx/sites-enabled/pager
     links:
-      - pager-php
+    - pager-php
     ports:
-      #pager
-      - "3406:86"
+    - "3406:86"
   pager-php:
     image: tobi312/rpi-php:7.0-fpm
     restart: always
     volumes:
-      - ./cmd/web/pager/www:/sites/pager
-      - ./cmd/web/pager/default:/etc/nginx/sites-enabled/pager
+    - ./cmd/web/pager/www:/sites/pager
     environment:
-      #pager
-      - "pager_flag=FLAG-DwK7Gm4zL5QbsL6WdCpb"
+    - "pager_flag=FLAG-DwK7Gm4zL5QbsL6WdCpb"
   nottelnet:
     image: nottelnet
     restart: always
