@@ -69,9 +69,6 @@ services:
     #robots
     - ./cmd/web/robots/www:/sites/robots
     - ./cmd/web/robots/default:/etc/nginx/sites-enabled/robots
-    #pager
-    - ./cmd/web/pager/www:/sites/pager
-    - ./cmd/web/pager/default:/etc/nginx/sites-enabled/pager
     #walloffire
     - ./cmd/web/walloffire/www:/sites/walloffire
     - ./cmd/web/walloffire/default:/etc/nginx/sites-enabled/walloffire
@@ -96,8 +93,6 @@ services:
     - "3404:84"
     #robots
     - "3405:85"
-    #pager
-    - "3406:86"
     #walloffire
     - "3407:87"
     #setme
@@ -149,8 +144,6 @@ services:
     - ./cmd/web/md52/www:/sites/md52
     #robots
     - ./cmd/web/robots/www:/sites/robots
-    #pager
-    - ./cmd/web/pager/www:/sites/pager
     #walloffire
     - ./cmd/web/walloffire/www:/sites/walloffire
     #setme
@@ -203,6 +196,28 @@ services:
       && chmod 4755 /usr/bin/vim.basic
       && chmod u+s /usr/bin/vim.basic
       && /entrypoint.sh php-fpm7.0"
+  pager-web:
+    image: tobi312/rpi-nginx:latest
+    restart: always
+    depends_on:
+      - breakme-php
+    volumes:
+      - ./cmd/web/pager/www:/sites/pager
+      - ./cmd/web/pager/default:/etc/nginx/sites-enabled/pager
+    links:
+      - pager-php
+    ports:
+      #pager
+      - "3406:86"
+  pager-php:
+    image: tobi312/rpi-php:7.0-fpm
+    restart: always
+    volumes:
+      - ./cmd/web/pager/www:/sites/pager
+      - ./cmd/web/pager/default:/etc/nginx/sites-enabled/pager
+    environment:
+      #pager
+      - "pager_flag=FLAG-DwK7Gm4zL5QbsL6WdCpb"
   nottelnet:
     image: nottelnet
     restart: always
@@ -219,6 +234,7 @@ services:
       && su dvr -s /app/app"
   timeapi:
     image: timeapi
+    restart: always
     ports:
       - "3905:3001"
     environment:
