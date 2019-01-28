@@ -13,7 +13,7 @@ server {
                         return 444;
                 }
 
-                fastcgi_pass hackme-php:9000;
+                fastcgi_pass pager-php:9000;
                 fastcgi_split_path_info ^(.+\.php)(/.+)$;
                 fastcgi_index index.php;
                 include fastcgi.conf;
