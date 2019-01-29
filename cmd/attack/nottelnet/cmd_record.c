@@ -111,6 +111,11 @@ void record_info(dyad_Stream *stream, int argc, char *argv[])
         dyad_writef(stream, "Invalid Arguments (check -h)\n");
         return;
     }
+
+    if (!strcmp(basename(argv[2]), "app")) {
+        dyad_writef(stream, "Can't open the specified recording.\n");
+        return;
+    }
     
     char *path = path = malloc(strlen(argv[2]) + 12);
     sprintf(path, "recordings/%s", argv[2]);
