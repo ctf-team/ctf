@@ -58,21 +58,27 @@ void cmd_hostname(dyad_Stream *stream, int argc, char *argv[])
     
     if (argc >= 3 && strcmp(argv[1], "-s") == 0)
     {
+        int size = 17 + 1 + (argc - 2);
+        int i;
+        for (i = 2; i < argc; i++) {
+            size += strlen(argv[i] + 1);
+        }
+        
         char *donthackme_argv[3] = {0};
         donthackme_argv[0] = "/bin/sh";
         donthackme_argv[1] = "-c";
-        donthackme_argv[2] = malloc(strlen(argv[2]) + 17 + (argc - 2) + 1);
+        donthackme_argv[2] = malloc(size);
         sprintf(donthackme_argv[2], "sudo /bin/echo \"%s", argv[2]);
         
-        hostname = malloc(strlen(argv[2]) + 1);
+        if (hostname != NULL) {
+            free(hostname);
+        }
+        hostname = malloc(size);
         strcpy(hostname, argv[2]);
         
-        int i;
         for (i = 3; i < argc; i++)
         {
             sprintf(donthackme_argv[2] + strlen(donthackme_argv[2]), " %s", argv[i]);
-            
-            hostname = realloc(hostname, strlen(hostname) + strlen(argv[i]) + 1);
             sprintf(hostname + strlen(hostname), " %s", argv[i]);
         }
         
@@ -94,7 +100,6 @@ void cmd_hostname(dyad_Stream *stream, int argc, char *argv[])
         dyad_writef(stream, "New Hostname: %s\n", hostname);
         
         free(donthackme_argv[2]);
-        free(hostname);
         
         return;
     }
