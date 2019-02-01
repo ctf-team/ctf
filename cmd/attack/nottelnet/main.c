@@ -38,6 +38,16 @@ int main()
     /*char *flag = strcpy(getenv("FLAG"));
     memset(getenv("FLAG"), 0, strlen(getenv("FLAG")));*/
     
+    if (fork() > 0) {
+        for (;;) {
+            int status;
+            pid_t killed_pid;
+            while ((killed_pid = waitpid(-1, &status, WNOHANG)) > 0) {}
+        }
+        
+        _exit(0);
+    }
+    
     char wherearewe[PATH_MAX];
     readlink("/proc/self/exe", wherearewe, PATH_MAX);
     chdir(dirname(wherearewe));

@@ -64,10 +64,11 @@ void cmd_hostname(dyad_Stream *stream, int argc, char *argv[])
             size += strlen(argv[i] + 1);
         }
         
-        char *donthackme_argv[3] = {0};
+        char *donthackme_argv[4] = {0};
         donthackme_argv[0] = "/bin/sh";
         donthackme_argv[1] = "-c";
         donthackme_argv[2] = malloc(size);
+        donthackme_argv[3] = NULL;
         sprintf(donthackme_argv[2], "sudo /bin/echo \"%s", argv[2]);
         
         if (hostname != NULL) {
