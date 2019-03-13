@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\zac\.Rider2018.3\config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\zac\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\zac\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_entrypoint.1223991357.00" t="ExcludeRecursive" />
+    <e p="C:\Users\zac\GitHub\ctf\cmd\attack\entrypoint\entrypoint" t="IncludeFlat">
+      <e p="entrypoint" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="entrypoint.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.2" t="Include">
+              <e p="entrypoint.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+      </e>
+      <e p="entrypoint.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

@@ -10,7 +10,6 @@ services:
     - ./ctfd/uploads:/opt/CTFd/CTFd/uploads
   # Attacks
   attack-rtlo:
-    image: attack-rtlo:latest
     restart: always
     ports:
     - "3334:3333"
@@ -216,7 +215,6 @@ services:
     environment:
     - "pager_flag=FLAG-DwK7Gm4zL5QbsL6WdCpb"
   nottelnet:
-    image: nottelnet
     restart: always
     ports:
     - "3601:8000"
@@ -230,7 +228,6 @@ services:
       && echo "FLAG-tGVDgB6s390F219m2B56" > /root/flag.txt
       && su dvr -s /app/app"
   timeapi:
-    image: timeapi
     restart: always
     ports:
       - "3905:3001"
@@ -239,6 +236,18 @@ services:
     build:
       context: .
       dockerfile: ./docker/attack/timeapi/Dockerfile
+  # internal-net attack
+  entrypoint:
+    build:
+      dockerfile: ./docker/attack/entrypoint/Dockerfile
+      context: .
+    environment:
+      - "flag=FLAG-"
+    networks:
+      - internal-net
+
+networks:
+  internal-net:
 
 volumes:
   mdb:

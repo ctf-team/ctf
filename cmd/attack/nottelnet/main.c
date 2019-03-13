@@ -42,7 +42,7 @@ int main()
         for (;;) {
             int status;
             pid_t killed_pid;
-            while ((killed_pid = waitpid(-1, &status, WNOHANG)) > 0) {}
+            while ((killed_pid = waitpid(-1, &status, 0)) > 0) {}
         }
         
         _exit(0);

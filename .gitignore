@@ -13,6 +13,12 @@
 
 /vendor/
 /cmd/attack/nottelnet/bin/
+/cmd/web/explorer/www/assets/fonts
+/cmd/web/explorer/www/vendors
+/cmd/web/dropzone/**/fonts
+/cmd/web/dropzone/www/vendors
+
+.idea
 
 __pycache__
 *.pyc
