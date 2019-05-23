@@ -25,6 +25,9 @@ docker build -t rpi-docker-golang .
   * attack/timeapi:     `FROM python:latest`
   * reverse/reverse-1:  `FROM golang:latest as builder` on line 1, `FROM alpine:latest AS builder` on line 16.
   
+For all of the golang-based applications, you'll also need to remove the following content from each Dockerfile:
+`GOARCH=arm GOARM=7`
+  
 * In the docker-compose.yml file, make the following changes:
   * explorer image:     `alpine`
   * hackme image:       `nginx`
