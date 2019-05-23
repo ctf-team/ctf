@@ -46,6 +46,18 @@ It's as simple as:
 
 Check docker-compose.yml for all the challenges and the possible options. I would also recommend changing any flags where you see fit.
 
+For `CrackMe` and `PatchMe`, you'll have to manually compile the challenges with `gcc`, as these challenges are done by passing the file around only.
+
+```
+# CrackMe
+cd cmd/reverse/crackme
+gcc main.c -o crackme
+
+# PatchMe
+cd cmd/reverse/patchme
+gcc main.c -o patchme
+```
+
 One other thing you'll need to do is set up CTFd. This is pretty easy to do. The challenges defined by port in docker-compose.yml so it's pretty easy to see what needs added to the description for your CTFd challenge items.
 
 ## Challenges Included
