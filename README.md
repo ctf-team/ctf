@@ -44,3 +44,29 @@ It's as simple as:
 Check docker-compose.yml for all the challenges and the possible options. I would also recommend changing any flags where you see fit.
 
 One other thing you'll need to do is set up CTFd. This is pretty easy to do. The challenges defined by port in docker-compose.yml so it's pretty easy to see what needs added to the description for your CTFd challenge items.
+
+## Challenges Included
+
+* Pwn
+  * TimedApi - A time-based API written in Python.
+  * NotTelnet - A minimal chinese DVR-type challenge over telnet written in C.
+  * DropZone - A media upload site that doesn't properly validate uploads written in PHP.
+* Web
+  * Login - A super basic login prompt written in PHP.
+  * GetMe - A super basic authorize check written in PHP.
+  * HackMe - A progressional site that has multiple guided steps to get your way to editing the site written in PHP.
+  * SetMe - A cookie based auth written in PHP.
+  * MD5 - A basic MD5-based authentication written in PHP.
+  * MD5-2 - A fun MD5-based challenge written in PHP.
+  * Robots - A hidden directory challenge written in PHP.
+  * Wall of Fire - A "firewall" challenge that deals with HTTP headers, written in PHP.
+  * Pager - A file browser challenge written in PHP.
+  * Explorer - A hidden directory challenge that involves logging into a server over SSH after finding the hidden file.
+* Reverse Engineering
+  * CrackMe - A super basic reverse engineering challenge written in C.
+  * PatchMe - A XOR-based reverse engineering challenge written in C.
+  * Reverse-1 - A buffer-overflow based challenge written in C and Golang.
+* Encoding
+  * RTLO - A Right-To-Left encoding challenge written in Golang.
+
+There's also a challenge called entrypoint that was never finished. It was going to be written in C# but then I ran out of time.
