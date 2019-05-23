@@ -17,8 +17,12 @@
 /cmd/web/explorer/www/vendors
 /cmd/web/dropzone/**/fonts
 /cmd/web/dropzone/www/vendors
+/ctfd/*
 
 .idea
 
 __pycache__
 *.pyc
+
+obj
+bin
